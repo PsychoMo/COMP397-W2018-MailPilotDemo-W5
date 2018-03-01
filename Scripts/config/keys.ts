@@ -1,6 +1,6 @@
 module config {
     export class Keys {
-        // arrow key
+        // arrow keys
         public static LEFT_ARROW: number = 37;
         public static RIGHT_ARROW: number = 39;
         public static UP_ARROW: number = 38;

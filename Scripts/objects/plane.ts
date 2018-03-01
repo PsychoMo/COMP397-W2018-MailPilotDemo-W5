@@ -16,6 +16,7 @@ module objects {
 
         // Initializes variables and creates new objects
         public Start(): void {
+            this.x = 320;
             this.y = 430;
         }
 
@@ -32,7 +33,25 @@ module objects {
 
         // move the object to some new location
         public Move(): void {
-            this.x = objects.Game.stage.mouseX;
+            // mouse controls
+            // this.x = objects.Game.stage.mouseX;
+
+            // keyboard controls
+            if (objects.Game.keyboardManager.moveLeft) {
+                this.x -= 5;
+            }
+
+            if (objects.Game.keyboardManager.moveRight) {
+                this.x += 5;
+            }
+
+            if (objects.Game.keyboardManager.moveForward) {
+                this.y -= 5;
+            }
+
+            if (objects.Game.keyboardManager.moveBackward) {
+                this.y += 5;
+            }
         }
 
         // check to see if some boundary has been passed
@@ -43,8 +62,18 @@ module objects {
             }
 
             // left boundary
-            if(this.x <= this.halfWidth) {
+            if (this.x <= this.halfWidth) {
                 this.x = this.halfWidth;
+            }
+
+            // Top boundary
+            if (this.y <= this.halfWidth) {
+                this.y = this.halfWidth;
+            }
+
+            // Bottom boundary
+            if (this.y >= 480 - this.halfWidth) {
+                this.y = 480 - this.halfWidth;
             }
         }
     }

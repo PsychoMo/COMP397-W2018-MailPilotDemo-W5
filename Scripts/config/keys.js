@@ -3,7 +3,7 @@ var config;
     var Keys = /** @class */ (function () {
         function Keys() {
         }
-        // arrow key
+        // arrow keys
         Keys.LEFT_ARROW = 37;
         Keys.RIGHT_ARROW = 39;
         Keys.UP_ARROW = 38;

@@ -24,6 +24,7 @@ var objects;
         // public methods
         // Initializes variables and creates new objects
         Plane.prototype.Start = function () {
+            this.x = 320;
             this.y = 430;
         };
         // Updates game object every frame
@@ -36,7 +37,21 @@ var objects;
         };
         // move the object to some new location
         Plane.prototype.Move = function () {
-            this.x = objects.Game.stage.mouseX;
+            // mouse controls
+            // this.x = objects.Game.stage.mouseX;
+            // keyboard controls
+            if (objects.Game.keyboardManager.moveLeft) {
+                this.x -= 5;
+            }
+            if (objects.Game.keyboardManager.moveRight) {
+                this.x += 5;
+            }
+            if (objects.Game.keyboardManager.moveForward) {
+                this.y -= 5;
+            }
+            if (objects.Game.keyboardManager.moveBackward) {
+                this.y += 5;
+            }
         };
         // check to see if some boundary has been passed
         Plane.prototype.CheckBounds = function () {
@@ -47,6 +62,14 @@ var objects;
             // left boundary
             if (this.x <= this.halfWidth) {
                 this.x = this.halfWidth;
+            }
+            // Top boundary
+            if (this.y <= this.halfWidth) {
+                this.y = this.halfWidth;
+            }
+            // Bottom boundary
+            if (this.y >= 480 - this.halfWidth) {
+                this.y = 480 - this.halfWidth;
             }
         };
         return Plane;
