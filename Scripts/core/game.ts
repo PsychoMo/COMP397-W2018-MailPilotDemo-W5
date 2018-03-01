@@ -22,6 +22,9 @@
     { id: "plane", src: "./Assets/images/plane.png" },
     { id: "island", src: "./Assets/images/island.png" },
     { id: "cloud", src: "./Assets/images/cloud.png" },
+    { id: "engine", src: "./Assets/audio/engine.ogg" },
+    { id: "thunder", src: "./Assets/audio/thunder.ogg" },
+    { id: "yay", src: "./Assets/audio/yay.ogg" },
   ];
 
   // preloads assets

@@ -8,8 +8,15 @@ module managers {
 
             if (math.Vec2.Distance(P1, P2) < (object1.halfHeight + object2.halfHeight)) {
                 if (!object2.isColliding) {
-                    console.log("Collision with " + object2.name);
                     object2.isColliding = true;
+                    switch (object2.name) {
+                        case "island":
+                            createjs.Sound.play("yay");
+                            break;
+                        case "cloud":
+                            createjs.Sound.play("thunder");
+                            break;
+                    }
                 }
             }
             else {
