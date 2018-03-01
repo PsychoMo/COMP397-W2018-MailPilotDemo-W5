@@ -38,13 +38,19 @@ module scenes {
             this.Main();
         }
 
+        // triggered every frame
         public Update(): void {
             this._ocean.Update();
             this._island.Update();
             this._plane.Update();
 
+            // check collision between plane and island
+            managers.Collision.Check(this._plane, this._island);
+
             this._clouds.forEach(cloud => {
                 cloud.Update();
+                // check collision between plane and current cloud
+                managers.Collision.Check(this._plane, cloud);
             });
         }
 
