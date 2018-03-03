@@ -2,7 +2,11 @@ module scenes {
     export class OverScene extends objects.Scene {
         // Private Instance Variables
         private _overLabel: objects.Label;
-        private _backButton: objects.Button;
+        private _restartButton: objects.Button;
+        private _ocean: objects.Ocean;
+
+
+        private _scoreboard: managers.ScoreBoard;
 
         // Public Properties
 
@@ -14,7 +18,7 @@ module scenes {
         }
 
         // Private Methods
-        private _backButtonClick(): void {
+        private _restartButtonClick(): void {
             objects.Game.currentScene = config.Scene.PLAY;
         }
 
@@ -23,25 +27,35 @@ module scenes {
 
         // Initialize Game Variables and Objects
         public Start(): void {
-            this._overLabel = new objects.Label("Game Over", "40px", "Consolas", "#000000", 320, 240, true);
-            this._backButton = new objects.Button(this.assetManager, "backButton", 320, 340);
+            this._ocean = new objects.Ocean(this.assetManager);
+            this._overLabel = new objects.Label("Game Over", "60px", "Consolas", "#FFFF00", 320, 140, true);
+            this._restartButton = new objects.Button(this.assetManager, "restartButton", 320, 340);
+            this._scoreboard = new managers.ScoreBoard();
+
             this.Main();
         }
 
         public Update(): void {
-            
+            this._ocean.Update();
         }
 
         // This is where the fun happens
         public Main(): void {
+            // add the ocean object
+            this.addChild(this._ocean);
+
             // add the welcome label to the scene
             this.addChild(this._overLabel);
 
             // add the backButton to the scene
-            this.addChild(this._backButton);
+            this.addChild(this._restartButton);
+
+            // add scoreboard to the scene
+            this.addChild(this._scoreboard.HighScoreLabel);
+            this._scoreboard.HighScore = objects.Game.HighScore;
 
             // event listeners
-            this._backButton.on("click", this._backButtonClick);
+            this._restartButton.on("click", this._restartButtonClick);
         }
     }
 }

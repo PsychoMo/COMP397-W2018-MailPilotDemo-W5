@@ -16,6 +16,7 @@
         { id: "startButton", src: "./Assets/images/startButton.png" },
         { id: "nextButton", src: "./Assets/images/nextButton.png" },
         { id: "backButton", src: "./Assets/images/backButton.png" },
+        { id: "restartButton", src: "./Assets/images/restartButton.png" },
         { id: "ocean", src: "./Assets/images/ocean.gif" },
         { id: "plane", src: "./Assets/images/plane.png" },
         { id: "island", src: "./Assets/images/island.png" },
